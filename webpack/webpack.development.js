@@ -7,7 +7,7 @@ const RHL3 ='webpack/hot/only-dev-server';
 
 // If you have several entry points in entry
 // configuration option, make sure HMR is in each of them
-const styles = [HMR].concat(PATHS.style);
+const styles = [HMR,RHL3].concat(PATHS.style);
 
 let development = merge({
     devtool: 'eval-source-map',

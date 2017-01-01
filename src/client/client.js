@@ -1,8 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import configureStore from './store/configuerStore';
 import Root from './Root';
+
+injectTapEventPlugin();
 
 if (process.env.NODE_ENV !== 'production') {
   React.Perf = require('react-addons-perf');

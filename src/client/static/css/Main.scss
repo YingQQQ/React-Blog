@@ -1,6 +1,19 @@
+@import "flex-layout";
+@import "media";
+
 body{
-  color:blue;
+  margin: 1px;
 }
-a {
-    display: flex;
+.container{
+	margin:{
+	left:1rem;
+	right:1rem
+	}
+	font-size:1rem;
+	display:flex;
+	flex-wrap:wrap;
+	box-sizing:border-box;
+}
+.col-auto{
+  flex: 1 1 0 !important;
 }

@@ -1,6 +1,16 @@
 import React, { Component, PropTypes } from 'react';
-
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import getMuiTheme from 'material-ui/styles/getMuiTheme';
+// import { grey50, grey900 } from 'material-ui/styles/colors';
 import Header from '../components/header';
+
+// const selfMuiTheme = {
+//   palette: {
+//     primary1Color: grey50,
+//     alternateTextColor: grey900,
+//     canvasColor: grey900
+//   }
+// };
 
 class App extends Component {
   componentDidMount() {
@@ -10,7 +20,6 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <h1>AppDome</h1>
         {this.props.children}
       </div>
     );

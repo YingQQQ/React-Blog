@@ -1,0 +1,161 @@
+@charset "utf-8";
+$breakpoints: (phone: 320px, tablet: 768px, desktop: 1024px)  !default;
+$media-expressions: (screen: "screen",
+                    print: "print",
+                    handheld: "handheld",
+                    retina2x: ("(-webkit-min-device-pixel-ratio: 2)", "(min-resolution: 192dpi)"),
+                    retina3x: ("(-webkit-min-device-pixel-ratio: 3)", "(min-resolution: 350dpi)")
+                    ) !default;
+
+
+@function parse-expression($expression) {
+	$operator : '';
+	$value : '';
+	$element : '';
+	$result : '';
+	$is-width : true;
+
+
+		// 将运算符和表达式分开
+
+		// 内置函数str-slice($string, $start-at, $end-at:-1)
+		// 从字符串中提取字符 类型 string
+		// str-slice("abcd", 2, 3)   => "bc"
+		// str-slice("abcd", 2)      => "bcd"
+
+	@if(str-slice($expression, 2, 2) == "=") {
+		$operator : str-slice($expression, 1, 2);
+		$value : str-slice($expression, 3);
+	}@else{
+		$operator : str-slice($expression, 1, 1);
+		$value : str-slice($expression, 2);
+	}
+
+
+		// 检查我们获取expression的类型
+		// map-has-key($map, $key)：返回是否有值 类型bool
+		// map-has-key(("foo": 1, "bar": 2), "foo") => true
+		// map-has-key(("foo": 1, "bar": 2), "baz") => false
+
+		// map-get($map, $key) : 获取关联值 类型string
+		// map-get(("foo": 1, "bar": 2), "bar") => 2
+		// map-get(("foo": 1, "bar": 2), "baz") => null
+
+	@if map-has-key($breakpoints, $value){
+		$result : map-get($breakpoints,$value);
+	}@else if map-has-key($media-expressions, $expression){
+		$result : map-get($media-expressions,$expression);
+		$is-width : false;
+	}@else{
+		$result : to-number($value);
+	}
+
+	//如果我们处理width，我们需要考虑运算符
+	@if(is-width){
+		@if($operator == '>'){
+			$element:'(min-width : #{$result + 1})';
+		}@else if($operator == '<'){
+			$element:'(max-width : #{$result - 1})';
+		}@else if($operator == '>='){
+			$element:'(min-width : #{$result})';
+		}@else if($operator == '<='){
+			$element:'(max-width : #{$result})';
+		}
+	}@else{
+		$element :$result;
+	}
+
+	@return $element;
+}
+
+	// 	Sass的list非常类似于JavaScript语言中的数组
+	//	str-length($string) : 获取字符串长度
+	//	str-length("foo") => 3
+
+	//	nth($list, $n)	: 寻找索引值
+	//	nth(10px 20px 30px, 1) => 10px
+	//	nth((Helvetica, Arial, sans-serif), 3) => sans-serif
+
+	//	join($list1, $list2, $separator:auto) :合并数组
+	//	join((blue, red), (#abc, #def)) => blue, red, #abc, #def
+	//	join((blue, red), (#abc, #def), space) => blue red #abc #def
+
+@function get-query-branches($expressions) {
+	$result : '';
+	$has-groups : false;
+	// 遍历expressions
+	@each $expression in $expressions {
+		@if(str-length($result) != 0) {
+			$result : $result + ' and ';
+		}
+		@if(type-of ($expression) == 'string') {
+			$result : $result + $expression;
+		}@else if (type-of($expression) == 'list') {
+			$result : $result + nth($expression, 1);
+			$has-groups: true;
+		}
+	}
+
+	// 如果是一个数组，我们需要创建更多的可能性
+	@if $has-groups {
+		@each $expression in $expressions {
+			@if (type-of($expression) == 'list') {
+				$first :nth($expression, 1);
+
+				@each $member in $expression {
+					@if (($member) != $first) {
+						@each $partial in $result {
+							$result : join($result, str-replace-first($first, $member, $partial))
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@return $result;
+}
+
+//	添加一个str-replace-first函数
+
+//	str-index($string, $substring): 返回字符串的索引值
+//	str-index(abcd, X)  => null
+//	str-index(abcd, ab) => 1
+
+//str-slice : line =>21
+@function str-replace-first($search, $replace, $subject){
+	$search-start : str-index($subject, $search);
+
+	@if $search-start == null {
+		@return $subject;
+	}
+
+	$result : str-slice($subject, 0, $search-start - 1);
+	$result : $result + $replace;
+	$result : $result + str-slice($subject, $search-start + str-length($search));
+
+
+	@return $result;
+}
+
+
+@mixin media($conditions...) {
+	@for $i from 1 through length($conditions) {
+		$conditions : set-nth($conditions, $i, parse-expression(nth($conditions, $i)))
+	}
+
+	$branches : get-query-branches($conditions);
+	$query : '';
+
+	@each $brach in $branches {
+		@if(str-length($query) != 0) {
+			$query : $query + ',';
+		}
+
+		$query : $query + $brach;
+	}
+
+	@media #{$query} {
+		@content;
+	}
+}

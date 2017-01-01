@@ -1,7 +1,7 @@
 import Koa from 'koa';
 import middlewareRegister from './middlewareRegister';
 
-
+// global.navigator = { navigator: 'all' };
 const port = process.env.PORT || 3000;
 const app = new Koa();
 

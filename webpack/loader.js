@@ -60,12 +60,12 @@ exports.devLoaders = function (include) {
     module: {
       loaders: [{
         test: /\.s?css$/,
-        loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!postcss!sass?outputStyle=expanded&sourceMap',
+        loader:'style!css!postcss!sass',
         include: include
       },{
         test: require.resolve('react'),
         loader: 'expose?React'
-      },]
+      }]
     }
   };
 };

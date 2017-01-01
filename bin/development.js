@@ -15,7 +15,7 @@ const hotPort = process.env.PORT || 3001;
 global.__DEVELOPMENT__ = process.env.NODE_ENV === 'start';
 
 global.webpackIsomorphicTools = new WebpackIsomorphicTools(isomorphicConfig)
-  .server(ROOT, function () {
+  .server(ROOT, () => {
     const Koa = require('koa');
     const middleware = require('koa-webpack');
     const webpack = require('webpack');

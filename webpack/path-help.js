@@ -11,14 +11,14 @@ const APP =path.resolve(Client,'client.js');
 const Views =path.resolve(Server,'views');
 
 
-const configPath ={
-  ROOT:ROOT,
-  app:APP,
-  client:Client,
-  build:Build,
-  style:[path.resolve(Style,'Main.scss')],
-  isomorphic:Isomorphic,
-  views:Views
+const configPath = {
+  ROOT: ROOT,
+  app: APP,
+  client: Client,
+  build: Build,
+  style: [path.resolve(Style, 'Main.scss')],
+  isomorphic: Isomorphic,
+  views: Views
 }
 
 module.exports= configPath

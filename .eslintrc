@@ -24,9 +24,7 @@
     "object-shorthand":"off",
     "arrow-body-style":"off",
     "consistent-return":"off",
-    "prefer-arrow-callback":"off",
-    "no-restricted-syntax" :"off",
-    "no-param-reassign":"off",
+    "no-param-reassign":["error", { "props": false }],
     "import/no-mutable-exports":"off"
   },
   "plugins": [

@@ -10,6 +10,6 @@ const ROOT = PATHS.ROOT;
 global.__DEVELOPMENT__ = process.env.NODE_ENV === 'start';
 
 global.webpackIsomorphicTools = new WebpackIsomorphicTools(isomorphicConfig)
-  .server(ROOT, function () {
+  .server(ROOT, () => {
     require('../src/server/server');
   });

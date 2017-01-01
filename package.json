@@ -1,7 +1,7 @@
 {
   "name": "React-Blog",
   "version": "1.0.0",
-  "description": "webpack react",
+  "description": "webpack react blog redux",
   "main": "webpack.config.js",
   "scripts": {
     "start": "node ./bin/development",
@@ -66,6 +66,7 @@
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-polyfill": "^6.16.0",
     "babel-register": "^6.18.0",
+    "classnames": "^2.2.5",
     "ejs": "^2.5.5",
     "isomorphic-fetch": "^2.2.1",
     "koa": "^2.0.0-alpha.7",
@@ -73,11 +74,13 @@
     "koa-router": "^7.0.1",
     "koa-static": "^3.0.0",
     "koa-views": "^5.2.0",
+    "material-ui": "^0.16.6",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",
     "react-router": "^3.0.0",
     "react-router-redux": "^4.0.7",
+    "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0"
   }

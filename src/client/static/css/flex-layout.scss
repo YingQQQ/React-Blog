@@ -1,0 +1,80 @@
+@import "media";
+
+$gridCol : 12 !default;
+$gridSystemWidth:100% !default;
+$gridWidth:$gridSystemWidth/$gridCol !default;
+
+%flex-base{
+  box-sizing: border-box;
+}
+
+@for $i from 1 through $gridCol {
+    .col-lg-#{$i},
+    .col-md-#{$i},
+    .col-sm-#{$i},
+    .col-xs-#{$i} {
+        @extend %flex-base;
+    }
+}
+
+@for $i from 1 through $gridCol {
+    .col-xs-#{$i} {
+        flex-basis: $gridWidth*$i !important;
+    }
+    .col-offset-#{$i}{
+    	margin-left:$gridWidth*$i;
+    }
+}
+@for $i from 1 through $gridCol {
+    .col-xs-#{$i} {
+        flex-basis: $gridWidth*$i !important;
+    }
+
+    .col-offset-#{$i} {
+        margin-left: $gridWidth*$i;
+    }
+}
+@include media(">phone", "<=tablet") {
+    body{
+      background: green;
+    }
+    @for $i from 1 through $gridCol {
+        .col-sm-#{$i} {
+            flex-basis: $gridWidth*$i !important;
+        }
+    }
+}
+
+@include media(">tablet", "<=desktop") {
+    body{
+      background: yellow;
+    }
+    @for $i from 1 through $gridCol {
+        .col-md-#{$i} {
+            flex-basis: $gridWidth*$i !important;
+        }
+    }
+}
+@include media(">desktop") {
+	body{
+	}
+	@for $i from 1 through $gridCol {
+    .col-lg-#{$i} {
+        flex-basis: $gridWidth*$i
+        !important;
+    }
+	}
+}
+// .container{
+// 	margin:{
+// 	left:1rem;
+// 	right:1rem
+// 	}
+// 	font-size:1rem;
+// 	display:flex;
+// 	flex-wrap:wrap;
+// 	box-sizing:border-box;
+// }
+// .col-auto{
+//   flex: 1 1 0 !important;
+// }
