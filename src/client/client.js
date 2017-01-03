@@ -7,9 +7,6 @@ import Root from './Root';
 
 injectTapEventPlugin();
 
-if (process.env.NODE_ENV !== 'production') {
-  React.Perf = require('react-addons-perf');
-}
 const store = configureStore(window.__REDUX_STATE__);
 const rootEl = window.document.getElementById('app');
 

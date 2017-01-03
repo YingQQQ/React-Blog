@@ -4,14 +4,16 @@ import { Link } from 'react-router';
 import Row from './Grid/Row';
 import Col from './Grid/Col';
 
-export default () => {
+const justifyType = 'justifyend';
+const alignType = 'aligncenter';
+export default() => {
   return (
-    <Row>
-      <Col lg={6} md={6} xs={6}>
+    <Row justifyType={justifyType} alignType={alignType} >
+      <Col lg={4} md={6} xs={6}>
         <Link to="/">Home</Link>
       </Col>
-      <Col lg={6} md={6} xs={6}>
-        <Link to="/">about</Link>
+      <Col lg={4} md={6} xs={6}>
+        <Link to="/about">about!</Link>
       </Col>
     </Row>
   );

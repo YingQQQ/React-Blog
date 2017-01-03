@@ -75,7 +75,7 @@ exports.prodLoaders = function (include) {
     module: {
       loaders: [{
         test: /\.s?css$/,
-        loader: ExtractTextPlugin.extract('style', ['css?modules&importLoaders=1&sourceMap', 'postcss-loader', 'sass']),
+        loader: ExtractTextPlugin.extract('style', ['css', 'postcss-loader', 'sass']),
         include: include
       }]
     }

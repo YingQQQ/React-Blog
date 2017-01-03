@@ -4,6 +4,10 @@ $gridCol : 12 !default;
 $gridSystemWidth:100% !default;
 $gridWidth:$gridSystemWidth/$gridCol !default;
 
+
+$aligns:(start, end, center, baseline, stretch)!default;
+$justifies:(start,end,center,between,around) !default;
+
 %flex-base{
   box-sizing: border-box;
 }
@@ -65,16 +69,44 @@ $gridWidth:$gridSystemWidth/$gridCol !default;
     }
 	}
 }
-// .container{
-// 	margin:{
-// 	left:1rem;
-// 	right:1rem
-// 	}
-// 	font-size:1rem;
-// 	display:flex;
-// 	flex-wrap:wrap;
-// 	box-sizing:border-box;
-// }
-// .col-auto{
-//   flex: 1 1 0 !important;
-// }
+@each $justify in $justifies {
+	@if($justify == center){
+		.justify-#{$justify}{
+			justify-content:$justify
+		}
+	}@else if($justify == between or $justify == around){
+			.justify-#{$justify}{
+			justify-content:space-#{$justify}
+		}
+	}@else{
+			.justify-#{$justify}{
+			justify-content:flex-#{$justify}
+		}
+	}
+}
+
+@each $align in $aligns{
+	@if($align == start or $align == end){
+		.align-#{$align}{
+			align-items :flex-#{$align}
+		}
+	}@else{
+		.align-#{$align}{
+			align-items :$align
+		}
+	}
+}
+
+.container{
+	margin:{
+	left:1rem;
+	right:1rem
+	}
+	font-size:1rem;
+	display:flex;
+	flex-wrap:wrap;
+	box-sizing:border-box;
+}
+.col-auto{
+  flex: 1 1 0 !important;
+}

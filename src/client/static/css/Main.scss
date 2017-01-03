@@ -2,18 +2,5 @@
 @import "media";
 
 body{
-  margin: 1px;
-}
-.container{
-	margin:{
-	left:1rem;
-	right:1rem
-	}
-	font-size:1rem;
-	display:flex;
-	flex-wrap:wrap;
-	box-sizing:border-box;
-}
-.col-auto{
-  flex: 1 1 0 !important;
+  margin: 0px;
 }
