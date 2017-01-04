@@ -60,7 +60,7 @@ exports.devLoaders = function (include) {
     module: {
       loaders: [{
         test: /\.s?css$/,
-        loader:'style!css!postcss!sass',
+        loader:'style!css?importLoaders=1!postcss!sass',
         include: include
       },{
         test: require.resolve('react'),
@@ -90,7 +90,10 @@ exports.commonPlugins = function (options) {
         template: require('html-webpack-template'),
         title: options.title,
         appMountId: options.appMountId,
-        inject: false
+        inject: false,
+        links:[
+          "https://fonts.googleapis.com/css?family=Lato:300|Roboto"
+        ]
       })
     ]
   };

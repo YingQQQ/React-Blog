@@ -39,9 +39,6 @@ $justifies:(start,end,center,between,around) !default;
     }
 }
 @include media(">phone", "<=tablet") {
-    body{
-      background: green;
-    }
     @for $i from 1 through $gridCol {
         .col-sm-#{$i} {
             flex-basis: $gridWidth*$i !important;
@@ -50,9 +47,6 @@ $justifies:(start,end,center,between,around) !default;
 }
 
 @include media(">tablet", "<=desktop") {
-    body{
-      background: yellow;
-    }
     @for $i from 1 through $gridCol {
         .col-md-#{$i} {
             flex-basis: $gridWidth*$i !important;
@@ -60,8 +54,6 @@ $justifies:(start,end,center,between,around) !default;
     }
 }
 @include media(">desktop") {
-	body{
-	}
 	@for $i from 1 through $gridCol {
     .col-lg-#{$i} {
         flex-basis: $gridWidth*$i
@@ -98,10 +90,6 @@ $justifies:(start,end,center,between,around) !default;
 }
 
 .container{
-	margin:{
-	left:1rem;
-	right:1rem
-	}
 	font-size:1rem;
 	display:flex;
 	flex-wrap:wrap;

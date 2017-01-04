@@ -7,7 +7,7 @@ class Col extends Component {
   }
   render() {
     // {1,2,3,4,false,'width:120px'}
-    const { xs, sm, md, lg, offset, auto, className } = this.props;
+    const { xs, sm, md, lg, offset, auto, children, ...others } = this.props;
     const klasses = classNames({
       [`col-xs-${xs}`]: xs !== undefined,
       [`col-sm-${sm}`]: sm !== undefined,
@@ -15,17 +15,16 @@ class Col extends Component {
       [`col-lg-${lg}`]: lg !== undefined,
       [`col-offset-${lg}`]: offset !== undefined,
       'col-auto': auto !== undefined
-    }, className);
+    });
     return (
-      <div className={klasses}>
-        {this.props.children}
+      <div className={klasses} {...others}>
+        {children}
       </div>
     );
   }
 }
 Col.propTypes = {
-  children: PropTypes.shape(),
-  className: PropTypes.string,
+  children: PropTypes.node,
   xs: PropTypes.number,
   md: PropTypes.number,
   lg: PropTypes.number,
