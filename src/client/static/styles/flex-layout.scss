@@ -94,6 +94,14 @@ $justifies:(start,end,center,between,around) !default;
 	display:flex;
 	flex-wrap:wrap;
 	box-sizing:border-box;
+  margin: {
+    left: 1rem;
+    right: 1rem;
+    top: 1rem;
+  }
+}
+.flex-column{
+  flex-direction:column;
 }
 .col-auto{
   flex: 1 1 0 !important;

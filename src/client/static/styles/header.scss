@@ -1,0 +1,41 @@
+header {
+    padding: {
+        top: 1rem;
+        bottom: 1rem;
+    }
+}
+
+.header-hover{
+
+      a {
+          position: relative;
+          padding: {
+              right: 0.5rem;
+              left: 0.5rem;
+          }
+          font: {
+              size: 1.5rem;
+              weight: 300;
+          }
+          line-height: 1.5*1.2rem;
+          &:before{
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #000;
+            transform: scaleX(0);
+            transform-origin: 0 50%;
+            transition: transform .3s ease-out;
+          }
+          &:hover{
+            color: white;
+          }
+          &:hover:before{
+            transform: scaleX(1);
+          }
+      }
+}

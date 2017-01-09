@@ -1,0 +1,77 @@
+@import "flex-layout";
+@import "_reset";
+@import "colors";
+@import "header";
+@import "article";
+@import "aside";
+
+
+body {
+    font: {
+        family:-apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+    }
+    color:$body-color;
+    height: 100%;
+}
+
+.default-margin {
+    margin: {
+        left: 1rem;
+        right: 1rem;
+        top: 1rem;
+    }
+}
+
+a,
+h1 {
+    font-family: 'Lato', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+}
+
+h1 {
+    font: {
+        weight: 700;
+        size: 2.25rem;
+    }
+    line-height: 2.25*1.2rem;
+}
+p{
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+ul{
+  list-style: none;
+  padding: 0;
+}
+a{
+  text-decoration: none;
+  color:$a-color;
+  display: inline-flex;
+  box-shadow: 0 0 1px transparent;
+  transition: color .3s;
+  &:hover,&:focus{
+    color: black;
+  }
+}
+
+aside,
+main {
+    @extend .default-margin;
+}
+main{
+  min-height: 32rem;
+}
+
+
+
+
+.boxShadow{
+  box-shadow: 1px 1px 20px $shadow-color;
+}

@@ -1,0 +1,82 @@
+article {
+    header{
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    h1 {
+        margin-bottom: 1rem;
+        padding: {
+          left: 1rem;
+          right: 1rem;
+        }
+    }
+
+    a {
+        font: {
+            weight: 600;
+            size:1.75rem
+        }
+    }
+
+    p {
+        text-align: left;
+        word-spacing: 0.1rem;
+        letter-spacing: 0.01rem;
+    }
+}
+.button {
+    margin: {
+        top: 2rem;
+        bottom: 1rem;
+    }
+    word-spacing: 0.625rem;
+    font-size: 1.375rem;
+    text-align: center;
+
+    a {
+        padding: 0 1.25rem;
+        font-weight: 400;
+        line-height: 3rem;
+        position: relative;
+        text-shadow: 0 0 0.06rem rgba(255,255,255,0.3);
+
+        &::after,
+        &::before {
+            position: absolute;
+            width: 3rem;
+            height: 0.06rem;
+            content: '';
+            transition: all 0.3s;
+            pointer-events: none;
+            background: #C3C3C3;
+        }
+        &::before{
+          top: 0;
+          left: 0;
+          transform: rotate(90deg);
+          transform-origin: 0 0;
+        }
+        &::after{
+          right: 0;
+          bottom: 0;
+          transform: rotate(90deg);
+          transform-origin: 100% 0;
+        }
+        &:hover::before,
+        &:hover::after,
+        &:focus::before,
+        &:focus::after{
+          background: #000;
+        }
+        &:hover::before,
+        &:focus::before{
+          left: 50%;
+          transform: rotate(0deg) translateX(-50%);;
+        }
+        &:hover::after,
+        &:focus::after{
+          right: 50%;
+          transform: rotate(0deg) translateX(50%);;
+        }
+    }
+}

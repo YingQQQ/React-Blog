@@ -6,7 +6,7 @@ const Build =path.resolve(Dist,'build');
 const nodeModules =path.resolve(ROOT,'node_modules');
 const Client =path.resolve(ROOT,'src','client');
 const Server =path.resolve(ROOT,'src','server');
-const Style =path.resolve(Client,'static','css');
+const Styles =path.resolve(Client,'static','styles');
 const APP =path.resolve(Client,'client.js');
 const Views =path.resolve(Server,'views');
 
@@ -16,9 +16,11 @@ const configPath = {
   app: APP,
   client: Client,
   build: Build,
-  style: [path.resolve(Style, 'Main.scss')],
+  style: [path.resolve(Styles, 'Main.scss')],
   isomorphic: Isomorphic,
   views: Views
 }
+
+
 
 module.exports= configPath

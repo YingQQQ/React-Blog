@@ -2,10 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 
 function type(justifyType, alignType) {
-  if (justifyType === undefined && alignType === undefined) {
+  if (!!justifyType && !!alignType) {
     return false;
   }
-  console.log('type true');
   const justify = (justifyType && justifyType.includes('justify'))
     ? 'justify'
     : undefined;
@@ -15,20 +14,30 @@ function type(justifyType, alignType) {
     ? 'align'
     : undefined;
   const alignName = align && alignType.slice(5);
-  const flexJustify = { [`${justify}-${justifyName}`]: justify !== undefined };
-  const flexAlign = { [`${align}-${alignName}`]: align !== undefined };
+  const flexJustify = {
+    [`${justify}-${justifyName}`]: justify !== undefined
+  };
+  const flexAlign = {
+    [`${align}-${alignName}`]: align !== undefined
+  };
   return { flexJustify, flexAlign };
 }
 
 class Row extends Component {
-  componentDidMount() {
-    console.log('in Grid');
-  }
   render() {
-    // {'width:120px', justifyend, alignend,}
-    const { justifyType, alignType, children, ...others } = this.props;
+    // {'width:120px', 'justifyend', 'alignend'}
+    const {
+      justifyType,
+      alignType,
+      children,
+      className,
+      column,
+      ...others
+    } = this.props;
     const { flexJustify, flexAlign } = type(justifyType, alignType);
-    const klasses = classNames(flexJustify, flexAlign, 'container');
+    const klasses = classNames({
+      'flex-column': column
+    }, flexJustify, flexAlign, 'container', className);
     return (
       <div className={klasses} {...others}>
         {children}
@@ -39,7 +48,9 @@ class Row extends Component {
 Row.propTypes = {
   children: PropTypes.node,
   justifyType: PropTypes.string,
-  alignType: PropTypes.string
+  alignType: PropTypes.string,
+  className: PropTypes.string,
+  column: PropTypes.bool
 };
 
 export default Row;

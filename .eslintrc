@@ -23,7 +23,9 @@
     "arrow-body-style":"off",
     "consistent-return":"off",
     "no-param-reassign":["error", { "props": false }],
-    "import/no-mutable-exports":"off"
+    "import/no-mutable-exports":"off",
+    "react/jsx-boolean-value":"off",
+    "react/prefer-stateless-function":"off"
   },
   "plugins": [
     "react", "import"

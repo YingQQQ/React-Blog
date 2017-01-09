@@ -3,8 +3,8 @@ import React from 'react';
 
 export default() => {
   return (
-    <div>
+    <main>
       <h1>AboutPage</h1>
-    </div>
+    </main>
   );
 };
