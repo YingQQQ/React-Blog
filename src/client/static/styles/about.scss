@@ -1,0 +1,18 @@
+figure {
+    text-align: center;
+  
+    img {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        display: inline-flex;
+        margin-top: 1rem;
+    }
+
+    figcaption {
+        margin:{
+          top: 1rem;
+          bottom: 1rem;
+        }
+    }
+}

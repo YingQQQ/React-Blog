@@ -12,6 +12,7 @@
     "import/namespace": 0,
     "import/no-unresolved": 0,
     "import/no-named-as-default": 2,
+    "import/no-extraneous-dependencies":"off",
     "comma-dangle": 0,
     "no-underscore-dangle": 'off',
     "indent": [2, 2, {"SwitchCase": 1}],
@@ -25,7 +26,9 @@
     "no-param-reassign":["error", { "props": false }],
     "import/no-mutable-exports":"off",
     "react/jsx-boolean-value":"off",
-    "react/prefer-stateless-function":"off"
+    "react/prefer-stateless-function":"off",
+    "react/forbid-prop-types":"off",
+    "quote-props":"off"
   },
   "plugins": [
     "react", "import"

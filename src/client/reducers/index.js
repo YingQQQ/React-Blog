@@ -4,7 +4,12 @@ import {
 import {
   routerReducer
 } from 'react-router-redux';
+import posts from './postReducer';
+import auth from './loginReducer';
+
 
 export default combineReducers({
-  routing: routerReducer
+  routing: routerReducer,
+  posts,
+  auth
 });

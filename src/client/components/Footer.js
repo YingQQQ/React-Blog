@@ -1,38 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router';
 import Row from './Grid/Row';
 import Col from './Grid/Col';
 
 const justifyType = {
-  between: 'justifybetween',
-  end: 'justifyend'
+  around: 'justify-around',
+  center: 'justify-center'
 };
-const alignType = {
-  center: 'aligncenter',
-  end: 'alignend'
-};
-const lists = ['Home', 'Blog', 'About', 'Contact'];
+
 
 export default() => {
   return (
-    <header className="boxShadow default-margin">
-      <Row justifyType={justifyType.between} alignType={alignType.center}>
-        <Col xs={4} >
-          <div>
-            <h1>Black & White</h1>
-          </div>
-        </Col>
-        <Col xs={8}>
-          <Row justifyType={justifyType.end}>
-            <Col xs={6} className="header-hover">
-              { lists.map((list, i) => {
-                const cur = list.toLowerCase();
-                return <Link to={cur === 'home' ? '/' : `/${cur}`} key={i} >{list}</Link>;
-              })}
-            </Col>
+    <footer className="boxShadow default-margin">
+      <Row justifyType={justifyType.center}>
+        <Col xs={5} >
+          <Row justifyType={justifyType.around}>
+            <p>© 2016 created by Y </p>
+            <a href="https://github.com/YingQQQ" target="_blank" rel="noopener noreferrer" className="ion-hover"><i className="ion-social-github" /></a>
           </Row>
         </Col>
       </Row>
-    </header>
+    </footer>
   );
 };

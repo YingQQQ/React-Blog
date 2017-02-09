@@ -13,6 +13,7 @@ let development = merge({
     devtool: 'eval-source-map',
     entry: {
       app: [
+        'eventsource-polyfill',
         'webpack-hot-middleware/client?',
         'react-hot-loader/patch',
         'webpack/hot/only-dev-server',

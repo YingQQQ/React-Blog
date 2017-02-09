@@ -4,7 +4,8 @@
 @import "header";
 @import "article";
 @import "aside";
-
+@import "footer";
+@import "about";
 
 body {
     font: {
@@ -23,18 +24,21 @@ body {
 }
 
 a,
-h1 {
-    font-family: 'Lato', sans-serif;
-}
-
+input,
 h1,
 h2,
 h3,
 h4,
 p {
     margin: 0;
+    font-family: 'Lato', sans-serif;
 }
-
+input{
+  outline: none;
+}
+button{
+  border: none;
+}
 h1 {
     font: {
         weight: 700;
@@ -46,7 +50,8 @@ p{
   font-size: 1rem;
   line-height: 1.2rem;
 }
-ul{
+ul,
+li{
   list-style: none;
   padding: 0;
 }
@@ -69,9 +74,52 @@ main{
   min-height: 32rem;
 }
 
-
-
-
 .boxShadow{
   box-shadow: 1px 1px 20px $shadow-color;
+}
+
+.login{
+  position: relative;
+  margin: 0 auto;
+  top: 5rem;
+  h3{
+  text-align: center;
+  font-size: 1.5rem;
+  }
+  form{
+    padding-top: 3rem;
+  }
+}
+.single-input{
+  position: relative;
+  margin-bottom: 2rem;
+  i{
+    font-size: 1.8rem;
+    display: inline-flex;
+    position: absolute;
+    top: 22%;
+    left: 2%;
+    &::after{
+      content: '';
+      position: absolute;
+      right: -7px;
+      top: -6px;
+      bottom: -6px;
+      width: 1px;
+      opacity: .5;
+      background-color: #aaa;
+    }
+  }
+  input{
+    height: 3rem;
+    width: 100%;
+    padding-left: 2.5rem;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    transition:border-color .3s ease-out;
+    &:focus,
+    &:hover{
+      border-color:black;
+    }
+  }
 }

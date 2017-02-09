@@ -9,7 +9,7 @@ const WebpackIsomorphicTools = require('webpack-isomorphic-tools');
 const isomorphicConfig = require('../webpack/webpack-isomorphic-tools-config');
 
 const ROOT = PATHS.ROOT;
-const hotPort = process.env.PORT || 3001;
+const hotPort = process.env.PORT || 8080;
 
 
 global.__DEVELOPMENT__ = process.env.NODE_ENV === 'start';
@@ -28,18 +28,14 @@ global.webpackIsomorphicTools = new WebpackIsomorphicTools(isomorphicConfig)
       noInfo: true,
       quiet: true,
       publicPath: devConfig.output.publicPath,
+      headers: { 'Access-Control-Allow-Origin': '*' },
       stats: {
         colors: true
       }
     };
-    // webpack-hot-middleware
-    const hot = {
-
-    };
     app.use(middleware({
       compiler: compiler,
-      dev: dev,
-      hot: hot
+      dev: dev
     }));
 
     middlewareRegister(app);
