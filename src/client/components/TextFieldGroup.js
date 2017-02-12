@@ -4,9 +4,9 @@ import classnames from 'classnames';
 const TextFieldGroup = ({ error, field, value, label, onChange, type, ion }) => {
   return (
     <div className="single-input">
-      <i className={classnames(ion, 'Login-ion')} />
+      {ion ? <i className={classnames(ion, 'Login-ion')} /> : null}
       <input
-        className="input-txt"
+        className={classnames({ 'input-txt': ion })}
         onChange={onChange}
         value={value}
         type={type}

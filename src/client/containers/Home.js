@@ -5,6 +5,7 @@ import Aside from '../components/Aside';
 import Row from '../components/Grid/Row';
 import Col from '../components/Grid/Col';
 
+
 const justifyType = {
   around: 'justifyaround',
 };
@@ -12,17 +13,11 @@ class Home extends Component {
   render() {
     const { posts, loaded } = this.props;
     console.log(posts);
-    if (!loaded) {
-      return (
-        <div>
-          <h2>加载中...</h2>
-        </div>);
-    }
     return (
       <main>
         <Row justifyType={justifyType.around}>
           <Col xs={7} >
-            {posts.map((post, i) => <Article post={post} key={i} />)}
+            {posts.map((post, i) => <Article post={post} loaded={loaded} key={i} />)}
           </Col>
           <Col xs={4}>
             <Aside />

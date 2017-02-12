@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-
+import { justifyHooks, alignHooks } from '../../utils/flexHooks';
 
 class Row extends Component {
   render() {
@@ -15,8 +15,8 @@ class Row extends Component {
     } = this.props;
     const klasses = classNames({
       'flex-column': column,
-      [`${justifyType}`]: justifyType !== undefined,
-      [`${alignType}`]: alignType !== undefined
+      [`${justifyHooks[justifyType]}`]: justifyType !== undefined,
+      [`${alignHooks[alignType]}`]: alignType !== undefined
     }, 'container', className);
     return (
       <div className={klasses} {...others}>

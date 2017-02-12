@@ -4,13 +4,15 @@ import App from './containers/App';
 // import Home from './containers/Home';
 import About from './containers/About';
 // import Blog from './containers/Blog';
-import Contact from './containers/Contact';
+import Login from './containers/Login';
+import Write from './containers/Write';
 
 let routes = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <Route path="/about" component={About} />
-      <Route path="/contact" component={Contact} />
+      <Route path="/login" component={Login} />
+      <Route path="/write" component={Write} />
     </Route>
   </Router>
 );

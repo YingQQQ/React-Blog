@@ -3,8 +3,8 @@ import Row from './Grid/Row';
 import Col from './Grid/Col';
 
 const justifyType = {
-  around: 'justify-around',
-  center: 'justify-center'
+  around: 'around',
+  center: 'center'
 };
 
 

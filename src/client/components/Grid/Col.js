@@ -11,7 +11,7 @@ class Col extends Component {
       [`col-sm-${sm}`]: sm !== undefined,
       [`col-md-${md}`]: md !== undefined,
       [`col-lg-${lg}`]: lg !== undefined,
-      [`col-offset-${lg}`]: offset !== undefined,
+      [`col-offset-${offset}`]: offset !== undefined,
       'col-auto': auto !== undefined,
     }, className);
     return (

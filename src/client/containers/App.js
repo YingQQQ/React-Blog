@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 // import fetchStateIfNeed from '../actions/postAction';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -36,5 +36,5 @@ App.propTypes = {
   // dispatch: PropTypes.func,
 };
 
-export default App;
-// export default connect(state => state.posts)(App);
+// export default App;
+export default connect(state => state.posts)(App);

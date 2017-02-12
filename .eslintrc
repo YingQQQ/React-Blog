@@ -28,7 +28,9 @@
     "react/jsx-boolean-value":"off",
     "react/prefer-stateless-function":"off",
     "react/forbid-prop-types":"off",
-    "quote-props":"off"
+    "quote-props":"off",
+    "no-restricted-syntax":"off",
+    "class-methods-use-this":"off"
   },
   "plugins": [
     "react", "import"

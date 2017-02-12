@@ -5,7 +5,7 @@ import Row from '../components/Grid/Row';
 import Col from '../components/Grid/Col';
 
 const justifyType = {
-  around: 'justifyaround',
+  around: 'around',
 };
 
 class Blog extends Component {

@@ -2,19 +2,25 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import loginUser from '../actions/loginAction';
 import TextFieldGroup from './TextFieldGroup';
-import validData from '../utils/validData';
 
-class LoginForm extends Component {
+
+class TextareaForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: this.props.name || '',
-      password: '',
+      name: '',
+      rows: 20,
       errors: {},
-      isloading: false
+      introduction: '',
+      post: '',
+      category: '',
+      isloading: false,
+      baseScrollHeight: undefined
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
+    this.onFocus = this.onFocus.bind(this);
   }
   onChange(e) {
     this.setState({
@@ -43,47 +49,56 @@ class LoginForm extends Component {
         });
     }
   }
-  isValid() {
-    const { errors, isValid } = validData(this.state);
-    if (!isValid) {
-      this.setState({ errors });
+  onKeyUp(e) {
+    const curNode = this.textarea;
+    const rows = curNode.rows;
+    const scrollHeight = curNode.scrollHeight;
+    const baseScrollHeight = this.state.baseScrollHeight;
+    if (e.keyCode === 13 && (scrollHeight > baseScrollHeight)) {
+      this.setState({
+        rows: rows + 2
+      });
     }
-    return isValid;
+  }
+  onFocus() {
+    const curNode = this.textarea;
+    console.log(`onFocus:${curNode.scrollHeight}`);
+    this.setState({
+      baseScrollHeight: curNode.scrollHeight
+    });
   }
   render() {
-    const { name, errors, password } = this.state;
+    const { name, errors, post, rows } = this.state;
     return (
       <form onSubmit={this.onSubmit}>
         <TextFieldGroup
           field="name"
-          label="邮箱"
-          ion={'ion-android-contact'}
+          label="Title"
           value={name}
           error={errors.name}
           onChange={this.onChange}
         />
-        <TextFieldGroup
-          field="password"
-          label="密码"
-          type="password"
-          ion={'ion-android-lock'}
-          value={password}
-          error={errors.password}
+        <textarea
+          ref={(textarea) => { this.textarea = textarea; }}
+          rows={rows}
+          name="post"
+          placeholder="Post"
+          value={post}
           onChange={this.onChange}
+          onKeyUp={this.onKeyUp}
+          onFocus={this.onFocus}
         />
-        <button type="submit" className="btn">登录</button>
       </form>
     );
   }
 }
 
 
-LoginForm.propTypes = {
-  name: PropTypes.string,
+TextareaForm.propTypes = {
   loginUser: PropTypes.func.isRequired,
 };
-LoginForm.contextTypes = {
+TextareaForm.contextTypes = {
   router: PropTypes.object.isRequired
 };
 
-export default connect(null, { loginUser })(LoginForm);
+export default connect(null, { loginUser })(TextareaForm);
