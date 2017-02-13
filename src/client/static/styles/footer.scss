@@ -1,4 +1,7 @@
 footer {
+    position: relative;
+    bottom: 0;
+
     p {
         padding-top: 0.625rem;
     }
@@ -8,13 +11,16 @@ footer {
     }
 }
 
-.ion-hover{
-  transform: perspective(1px) translateZ(0);;
-  box-shadow: 0 0 1px transparent;
-  position: relative;
-  overflow: hidden;
-  transition: transform .3s;
-  &:hover,&:focus,&:active{
-    transform: scale(1.1);;
-  }
+.ion-hover {
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+
+    &:active,
+    &:focus,
+    &:hover {
+        transform: scale(1.1);
+    }
 }

@@ -4,7 +4,6 @@ import { justifyHooks, alignHooks } from '../../utils/flexHooks';
 
 class Row extends Component {
   render() {
-    // {'width:120px', 'justify-end', 'align-end'}
     const {
       justifyType,
       alignType,

@@ -1,14 +1,10 @@
+import Posts from '../models/posts';
+
+
 export default async (ctx) => {
-  const postsData = [{
-    title: '这款肉酱叫饭遭殃、面遭殃、粥也遭殃',
-    post: '香菇肉酱。材料很好找，做法很简单，可密封至冰箱常备，大概就是这样的毫无心理压力。不管拌饭、炒饭、吃米粉面条喝粥也都可以 wai 一勺，都能光盘，大概就是这样的口味效果。',
-    date: '2017-1-10'
-  }, {
-    title: '如何评价电影《爱乐之城》（La La Land）？',
-    post: '昨晚在伦敦看了《爱乐之城》（La La Land, 2016）提前试映，时间刚好是它横扫美国金球奖六项大奖的第二天。不过其实早在金球奖之前，这部威尼斯电影节的开幕影片，已经让有幸提前看到它的观众大呼过瘾，口碑一路走高。而今天公布的 2017 BAFTA（英国电影学院奖）提名，《爱乐之城》更是强势领跑，获得 11 项提名。',
-    date: '2017-1-11'
-  }];
-  console.log('into /api/post');
+  const postsData = await Posts.find({})
+    .sort('meta.updateAt')
+    .exec();
   ctx.body = {
     posts: postsData
   };

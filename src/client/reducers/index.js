@@ -5,7 +5,7 @@ import {
   routerReducer
 } from 'react-router-redux';
 import posts from './postReducer';
-import auth from './loginReducer';
+import auth from './loginORsaveReducer';
 
 
 export default combineReducers({

@@ -3,33 +3,39 @@ aside {
         margin-top: 0.5rem;
         padding-top: 1rem;
         font: {
-          size:1.5rem;
+            size: 1.5rem;
         }
         line-height: 1.8rem;
     }
-    a{
-      font-weight: 500;
-      transition: font-weight .3s;
-      &:hover,
-      &:focus{
-        font-weight: 600;
-      }
-    }
 
     ul {
-      padding-left: 1.5rem;
-      li{
-        position: relative;
-        margin-bottom: 0.4rem;
-        &::before {
-          content: '\f3d3';
-          font-family: "Ionicons";
-          position: absolute;
-          left: -1rem;
-          top: 0.06rem;
-          font-size: 16px;
-          color: #000;
+        padding-left: 1.5rem;
+
+        li {
+            position: relative;
+            margin-bottom: 0.4rem;
+
+            &::before {
+                content: '\f3d3';
+                position: absolute;
+                left: -1rem;
+                top: 0.06rem;
+                color: #000;
+                font-family: "Ionicons";
+                font-size: 16px;
+            }
         }
-      }
+    }
+
+    a {
+        position: relative;
+        box-shadow: 0 0 1px transparent;
+        overflow: hidden;
+        transition: transform 0.2s;
+
+        &:focus,
+        &:hover {
+            transform: scale(1.05);
+        }
     }
 }

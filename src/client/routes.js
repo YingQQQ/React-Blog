@@ -1,15 +1,17 @@
 import React from 'react';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './containers/App';
-// import Home from './containers/Home';
+import Home from './containers/Home';
 import About from './containers/About';
-// import Blog from './containers/Blog';
+import Blog from './containers/Blog';
 import Login from './containers/Login';
 import Write from './containers/Write';
 
 let routes = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
+      <IndexRoute component={Home} />
+      <Route path="/blog" component={Blog} />
       <Route path="/about" component={About} />
       <Route path="/login" component={Login} />
       <Route path="/write" component={Write} />

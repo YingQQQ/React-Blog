@@ -1,7 +1,7 @@
 import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  REQUEST_REQUEST,
+  REQUEST_SUCCESS,
+  REQUEST_FAILURE
 } from '../constants/typesActions';
 
 const initialState = {
@@ -9,17 +9,17 @@ const initialState = {
 };
 export default (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_REQUEST:
+    case REQUEST_REQUEST:
       return { ...state
       };
-    case LOGIN_SUCCESS:
+    case REQUEST_SUCCESS:
       return {
         ...state,
         isFetching: true,
         isAuthenticated: true,
         errors: action.err
       };
-    case LOGIN_FAILURE:
+    case REQUEST_FAILURE:
       return {
         ...state,
         isFetching: true,

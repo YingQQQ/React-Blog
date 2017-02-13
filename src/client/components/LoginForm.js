@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import loginUser from '../actions/loginAction';
+import loginORsaveAction from '../actions/loginORsaveAction';
 import TextFieldGroup from './TextFieldGroup';
 import validData from '../utils/validData';
 
@@ -10,8 +10,7 @@ class LoginForm extends Component {
     this.state = {
       name: this.props.name || '',
       password: '',
-      errors: {},
-      isloading: false
+      errors: {}
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -23,19 +22,18 @@ class LoginForm extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    this.setState({
-      isloading: true
-    });
     const _data = {
       name: this.state.name,
       password: this.state.password
     };
+    const { fetchUrl } = this.props;
+    console.log(fetchUrl);
     if (this.isValid()) {
-      this.props.loginUser(_data)
+      this.props.loginORsaveAction(fetchUrl, _data)
         .then((data) => {
-          if (data.errors) {
+          if (data.err) {
             this.setState({
-              errors: data.errors
+              errors: data.err
             });
           } else {
             this.context.router.push('/write');
@@ -80,10 +78,11 @@ class LoginForm extends Component {
 
 LoginForm.propTypes = {
   name: PropTypes.string,
-  loginUser: PropTypes.func.isRequired,
+  fetchUrl: PropTypes.string.isRequired,
+  loginORsaveAction: PropTypes.func.isRequired
 };
 LoginForm.contextTypes = {
   router: PropTypes.object.isRequired
 };
 
-export default connect(null, { loginUser })(LoginForm);
+export default connect(null, { loginORsaveAction })(LoginForm);

@@ -2,35 +2,28 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import Row from './Grid/Row';
 import Col from './Grid/Col';
-import Loader from './Loader';
+import MarkdownEle from './MarkdownEle';
 
-const type = {
-  center: 'center',
-};
+const styleType = 'center';
 
-const Article = ({ post, loaded }) => {
-  if (!loaded) {
-    return (
-      <Loader />
-    );
-  }
+const Article = ({ post }) => {
   return (
     <article className="boxShadow">
-      <Row column={true} alignType={type.center}>
+      <Row column={true} alignType={styleType}>
         <header>
           <h1>
             <Link to="/">{post.title}</Link>
           </h1>
-          <Row justifyType={type.center}>
+          <Row justifyType={styleType}>
             <Col xs={3}>
               <span>Web Design</span>
             </Col>
             <Col xs={3}>
-              <span>{post.date}</span>
+              <time>{post.date}</time>
             </Col>
           </Row>
         </header>
-        <p>{post.post}</p>
+        <MarkdownEle text={post.post} />
         <div className="button">
           <Link to="/" >Continue reading</Link>
         </div>
@@ -40,6 +33,5 @@ const Article = ({ post, loaded }) => {
 };
 Article.propTypes = {
   post: PropTypes.object.isRequired,
-  loaded: PropTypes.bool
 };
 export default Article;

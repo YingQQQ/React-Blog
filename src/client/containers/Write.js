@@ -4,28 +4,28 @@ import Row from '../components/Grid/Row';
 import Col from '../components/Grid/Col';
 import Textarea from '../components/Textarea';
 
-const justifyType = {
-  around: 'around',
-};
+
+const fetchUrl = 'http://localhost:3000/api/save';
 
 class Write extends Component {
-  componentWillMount() {
-    if (!this.props.isAuthenticated) {
-      this.context.router.push('/login');
-    }
-  }
-  componentWillUpdate(nextProps) {
-    if (!nextProps.isAuthenticated) {
-      this.context.router.push('/');
-    }
-  }
+  // componentWillMount() {
+  //   if (!this.props.isAuthenticated) {
+  //     this.context.router.push('/login');
+  //   }
+  // }
+  // componentWillUpdate(nextProps) {
+  //   if (!nextProps.isAuthenticated) {
+  //     this.context.router.push('/');
+  //   }
+  // }
   render() {
     return (
       <main>
-        <Row justifyType={justifyType.around}>
+        <Row>
           <Col xs={6} offset={3} className="boxShadow write">
-            <Textarea />
+            <Textarea fetchUrl={fetchUrl} />
           </Col>
+          <button>12312</button>
         </Row>
       </main>
     );

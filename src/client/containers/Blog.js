@@ -14,7 +14,7 @@ class Blog extends Component {
     return (
       <main>
         <Row justifyType={justifyType.around}>
-          <Col xs={10} >
+          <Col xs={9} >
             {posts.map((post, i) => <Article post={post} key={i} />)}
           </Col>
         </Row>
@@ -24,7 +24,7 @@ class Blog extends Component {
 }
 
 Blog.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.object),
+  posts: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(

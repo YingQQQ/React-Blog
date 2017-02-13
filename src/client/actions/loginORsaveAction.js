@@ -1,34 +1,32 @@
 import fetch from 'isomorphic-fetch';
 import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  REQUEST_REQUEST,
+  REQUEST_SUCCESS,
+  REQUEST_FAILURE
 } from '../constants/typesActions';
-
-const fetchUrl = 'http://localhost:3000/api/login';
 
 const requestLogin = () => {
   return {
-    type: LOGIN_REQUEST,
+    type: REQUEST_REQUEST,
   };
 };
 
 
 const succeedLogin = (data) => {
   return {
-    type: LOGIN_SUCCESS,
+    type: REQUEST_SUCCESS,
     err: data.errors
   };
 };
 
 const loginError = (err) => {
   return {
-    type: LOGIN_FAILURE,
+    type: REQUEST_FAILURE,
     err
   };
 };
 
-export default (creds) => {
+export default (fetchUrl, creds) => {
   const config = {
     method: 'post',
     credentials: 'include',

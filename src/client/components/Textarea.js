@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import loginUser from '../actions/loginAction';
+import loginORsaveAction from '../actions/loginORsaveAction';
 import TextFieldGroup from './TextFieldGroup';
 
 
@@ -8,13 +8,10 @@ class TextareaForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      title: '',
       rows: 20,
-      errors: {},
-      introduction: '',
+      errors: '',
       post: '',
-      category: '',
-      isloading: false,
       baseScrollHeight: undefined
     };
     this.onSubmit = this.onSubmit.bind(this);
@@ -29,16 +26,17 @@ class TextareaForm extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    this.setState({
-      isloading: true
-    });
     const _data = {
-      name: this.state.name,
-      password: this.state.password
+      title: this.state.title,
+      post: this.state.post
     };
+    console.log(_data);
+    const { fetchUrl } = this.props;
+    console.log(fetchUrl);
     if (this.isValid()) {
-      this.props.loginUser(_data)
+      this.props.loginORsaveAction(fetchUrl, _data)
         .then((data) => {
+          console.log(data.errors);
           if (data.errors) {
             this.setState({
               errors: data.errors
@@ -68,14 +66,14 @@ class TextareaForm extends Component {
     });
   }
   render() {
-    const { name, errors, post, rows } = this.state;
+    const { title, errors, post, rows } = this.state;
     return (
       <form onSubmit={this.onSubmit}>
         <TextFieldGroup
-          field="name"
+          field="title"
           label="Title"
-          value={name}
-          error={errors.name}
+          value={title}
+          error={errors.title}
           onChange={this.onChange}
         />
         <textarea
@@ -93,12 +91,12 @@ class TextareaForm extends Component {
   }
 }
 
-
 TextareaForm.propTypes = {
-  loginUser: PropTypes.func.isRequired,
+  loginORsaveAction: PropTypes.func.isRequired,
+  fetchUrl: PropTypes.string.isRequired
 };
 TextareaForm.contextTypes = {
   router: PropTypes.object.isRequired
 };
 
-export default connect(null, { loginUser })(TextareaForm);
+export default connect(null, { loginORsaveAction })(TextareaForm);

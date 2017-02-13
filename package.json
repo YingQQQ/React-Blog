@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "node ./bin/development",
-    "build": "webpack",
+    "build": "webpack --watch",
     "server": "node ./bin/production"
   },
   "repository": {
@@ -63,6 +63,7 @@
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-polyfill": "^6.16.0",
     "babel-register": "^6.18.0",
+    "bcryptjs": "^2.4.3",
     "classnames": "^2.2.5",
     "ejs": "^2.5.5",
     "highlightjs": "^9.8.0",
@@ -74,6 +75,7 @@
     "koa-views": "^5.2.0",
     "marked": "^0.3.6",
     "material-ui": "^0.16.6",
+    "mongoose": "^4.8.2",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-hot-loader": "^3.0.0-beta.6",

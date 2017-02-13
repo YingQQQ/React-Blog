@@ -8,12 +8,11 @@
 @import "about";
 @import "loader";
 
-
 body {
     font: {
-        family:-apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+        family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
     }
-    color:$body-color;
+    color: $body-color;
     height: 100%;
 }
 
@@ -26,24 +25,26 @@ body {
 }
 
 a,
-input,
 h1,
 h2,
 h3,
 h4,
+input,
 p {
     margin: 0;
     font-family: 'Lato', sans-serif;
 }
+
 button,
-textarea,
-input{
-  outline: none;
+input,
+textarea {
+    outline: none;
 }
 
-button{
-  border: none;
+button {
+    border: none;
 }
+
 h1 {
     font: {
         weight: 700;
@@ -51,119 +52,148 @@ h1 {
     }
     line-height: 2.25*1.2rem;
 }
-p{
-  font-size: 1rem;
-  line-height: 1.2rem;
+
+p {
+    font-size: 1rem;
+    line-height: 1.2rem;
 }
-ul,
-li{
-  list-style: none;
-  padding: 0;
+
+li,
+ul {
+    list-style: none;
+    padding: 0;
 }
-a{
-  text-decoration: none;
-  color:$a-color;
-  display: inline-flex;
-  box-shadow: 0 0 1px transparent;
-  transition: color .3s;
-  &:hover,&:focus{
-    color: black;
-  }
+
+a {
+    text-decoration: none;
+    color: $a-color;
+    display: inline-flex;
+    box-shadow: 0 0 1px transparent;
+    transition: color 0.3s;
+
+    &:focus,
+    &:hover {
+        color: black;
+    }
 }
-input{
-  height: 3rem;
-  width: 100%;
-  border: 1px solid #aaa;
-  transition:border-color .3s ease-out;
-  &:focus,
-  &:hover{
-    border-color:black;
-  }
+
+input {
+    height: 3rem;
+    width: 100%;
+    border: 1px solid #aaa;
+    transition: border-color 0.3s ease-out;
+
+    &:focus,
+    &:hover {
+        border-color: black;
+    }
 }
-textarea{
-  font-family: inherit;
-  width: 99%;
-  border: none;
-  font-size: 1.1rem;
-  overflow-y: hidden;
+
+textarea {
+    font-family: inherit;
+    width: 99%;
+    border: none;
+    font-size: 1.1rem;
+    overflow-y: hidden;
 }
 
 aside,
 main {
     @extend .default-margin;
 }
-main{
-  min-height: 32rem;
+
+main {
+    min-height: 50rem;
 }
 
-.boxShadow{
-  box-shadow: 1px 1px 20px $shadow-color;
+.boxShadow {
+    box-shadow: 1px 1px 20px $shadow-color;
 }
 
-.login{
-  position: relative;
-  margin: 0 auto;
-  top: 5rem;
-  h3{
-  text-align: center;
-  font-size: 1.5rem;
-  }
-  form{
-    padding-top: 3rem;
-  }
-  .btn{
-    width: 100%;
-    height: 2rem;
+.login {
     position: relative;
-    left: 1rem;
-    background: white;
-    cursor: pointer;
-    border: 1px solid #aaa;
-    transition: all .3s ease-out;
-    border-radius: .2rem;
-    &:hover{
-      background: $body-color;
-      color: white;
-    }
-  }
-}
-.single-input{
-  position: relative;
-  margin-bottom: 2rem;
-  i{
-    font-size: 1.8rem;
-    display: inline-flex;
-    position: absolute;
-    top: 22%;
-    left: 2%;
-    &::after{
-      content: '';
-      position: absolute;
-      right: -7px;
-      top: -6px;
-      bottom: -6px;
-      width: 1px;
-      opacity: .5;
-      background-color: #aaa;
-    }
-  }
+    margin: 0 auto;
+    top: 5rem;
 
-  .input-txt{
-    padding-left: 2.5rem;
-    border-radius: 4px;
-  }
-  .error{
-    position: absolute;
-    display: inline-flex;
-    width: 100%;
-    top: 3.5rem;
-  }
+    h3 {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    form {
+        padding-top: 3rem;
+    }
+
+    .btn {
+        width: 100%;
+        height: 2rem;
+        position: relative;
+        left: 1rem;
+        background: white;
+        cursor: pointer;
+        border: 1px solid #aaa;
+        transition: all 0.3s ease-out;
+        border-radius: 0.2rem;
+
+        &:hover {
+            background: $body-color;
+            color: white;
+        }
+    }
 }
-.write{
-  input{
-    font-size: 2rem;
-    font-weight: 700;
-    border: none;
-    border-bottom: 1px solid $shadow-color;
-  }
+
+.single-input {
+    position: relative;
+    margin-bottom: 2rem;
+
+    i {
+        font-size: 1.8rem;
+        display: inline-flex;
+        position: absolute;
+        top: 22%;
+        left: 2%;
+
+        &::after {
+            content: '';
+            position: absolute;
+            right: -7px;
+            top: -6px;
+            bottom: -6px;
+            width: 1px;
+            opacity: 0.5;
+            background-color: #aaa;
+        }
+    }
+
+    .input-txt {
+        padding-left: 2.5rem;
+        border-radius: 4px;
+    }
+
+    .error {
+        position: absolute;
+        display: inline-flex;
+        width: 100%;
+        top: 3.5rem;
+    }
+}
+
+.write {
+    input {
+        font-size: 2rem;
+        font-weight: 700;
+        border: none;
+        border-bottom: 1px solid $shadow-color;
+    }
+    button{
+      position: relative;
+      display:block;
+      left: -.5rem;
+      top: 1rem;
+      margin: 0 auto;
+      box-sizing: border-box;
+      border-radius: 1.5rem;
+      width: 3rem;
+      height: 3rem;
+    }
 }
