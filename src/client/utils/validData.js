@@ -12,13 +12,13 @@ function validIsEmpty(value) {
   return value == null || value === '';
 }
 
+
 export default (data) => {
   const errors = {};
-  if (validIsEmpty(data.name)) {
-    errors.name = '请输入用户名';
-  }
-  if (validIsEmpty(data.password)) {
-    errors.password = '请输入密码';
+  for (const key in data) {
+    if (validIsEmpty(data[key])) {
+      errors[key] = '请输入正确的信息';
+    }
   }
   return {
     errors,

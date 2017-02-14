@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "node ./bin/development",
-    "build": "webpack --watch",
+    "build": "webpack",
     "server": "node ./bin/production"
   },
   "repository": {

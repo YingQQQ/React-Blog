@@ -15,7 +15,7 @@ class Blog extends Component {
       <main>
         <Row justifyType={justifyType.around}>
           <Col xs={9} >
-            {posts.map((post, i) => <Article post={post} key={i} />)}
+            {posts.map((post, i) => <Article post={post} key={i} hasButton={true} />)}
           </Col>
         </Row>
       </main>

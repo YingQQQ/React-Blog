@@ -7,10 +7,11 @@
 @import "footer";
 @import "about";
 @import "loader";
+@import "github";
 
 body {
     font: {
-        family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+        family:Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
     }
     color: $body-color;
     height: 100%;
@@ -29,8 +30,7 @@ h1,
 h2,
 h3,
 h4,
-input,
-p {
+input{
     margin: 0;
     font-family: 'Lato', sans-serif;
 }
@@ -54,6 +54,7 @@ h1 {
 }
 
 p {
+    margin: 0;
     font-size: 1rem;
     line-height: 1.2rem;
 }
@@ -179,6 +180,7 @@ main {
 }
 
 .write {
+    box-sizing: border-box;
     input {
         font-size: 2rem;
         font-weight: 700;
@@ -186,14 +188,49 @@ main {
         border-bottom: 1px solid $shadow-color;
     }
     button{
+      display: block;
       position: relative;
-      display:block;
       left: -.5rem;
-      top: 1rem;
+      top: 3rem;
+      display:block;
+      width: 6rem;
+      height: 6rem;
       margin: 0 auto;
-      box-sizing: border-box;
-      border-radius: 1.5rem;
-      width: 3rem;
-      height: 3rem;
+      padding: 0;
+      background: white;
+      &:hover,&:focus{
+        .spinner2{
+
+          transform: rotate(90deg);
+        }
+      }
     }
+    .spinner2{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 1px solid $body-color;
+      border-top-color:  white;
+      border-bottom-color: white;
+      transition: all .8s ease-in-out;
+    }
+    h3{
+      display: block;
+      position: relative;
+      top: -4rem;
+    }
+}
+
+.single-post{
+  position: relative;
+  box-sizing: border-box;
+  article{
+    min-height: 48rem;
+    padding: 2rem;
+  }
+  p{
+    padding-bottom:.5rem;
+  }
 }

@@ -5,4 +5,7 @@ export default async (ctx) => {
   const _post = new Posts(body);
   await _post.save();
   ctx.status = 200;
+  ctx.body = {
+    errors: false
+  };
 };

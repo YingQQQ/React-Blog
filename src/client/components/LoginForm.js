@@ -27,7 +27,6 @@ class LoginForm extends Component {
       password: this.state.password
     };
     const { fetchUrl } = this.props;
-    console.log(fetchUrl);
     if (this.isValid()) {
       this.props.loginORsaveAction(fetchUrl, _data)
         .then((data) => {

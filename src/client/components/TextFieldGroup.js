@@ -13,7 +13,7 @@ const TextFieldGroup = ({ error, field, value, label, onChange, type, ion }) => 
         name={field}
         placeholder={label}
       />
-      {error && <span className={classnames({ 'error': error })}>{error}</span>}
+      { error && ion && <span className={classnames({ 'error': error })}>{error}</span>}
     </div>
   );
 };

@@ -1,31 +1,37 @@
-article {
-  position: relative;
-  margin-bottom: 2rem;
-    header{
-      margin-bottom: 1rem;
-      text-align: center;
+section {
+    position: relative;
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+    border-radius: 0.4rem;
+    letter-spacing: 1px;
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+
+    article {
+        padding: 1rem;
     }
+
+    header {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
     h1 {
         margin-bottom: 1rem;
         padding: {
-          left: 1rem;
-          right: 1rem;
+            left: 1rem;
+            right: 1rem;
         }
     }
 
     a {
         font: {
             weight: 600;
-            size:1.75rem
+            size: 1.75rem;
         }
     }
-
-    p {
-        text-align: left;
-        word-spacing: 0.1rem;
-        letter-spacing: 0.01rem;
-    }
 }
+
 .button {
     margin: {
         top: 2rem;
@@ -52,33 +58,38 @@ article {
             pointer-events: none;
             background: #C3C3C3;
         }
-        &::before{
-          top: 0;
-          left: 0;
-          transform: rotate(90deg);
-          transform-origin: 0 0;
+
+        &::before {
+            top: 0;
+            left: 0;
+            transform: rotate(90deg);
+            transform-origin: 0 0;
         }
-        &::after{
-          right: 0;
-          bottom: 0;
-          transform: rotate(90deg);
-          transform-origin: 100% 0;
+
+        &::after {
+            right: 0;
+            bottom: 0;
+            transform: rotate(90deg);
+            transform-origin: 100% 0;
         }
-        &:hover::before,
-        &:hover::after,
+
+        &:focus::after,
         &:focus::before,
-        &:focus::after{
-          background: #000;
-        }
-        &:hover::before,
-        &:focus::before{
-          left: 50%;
-          transform: rotate(0deg) translateX(-50%);;
-        }
         &:hover::after,
-        &:focus::after{
-          right: 50%;
-          transform: rotate(0deg) translateX(50%);;
+        &:hover::before {
+            background: #000;
+        }
+
+        &:focus::before,
+        &:hover::before {
+            left: 50%;
+            transform: rotate(0deg) translateX(-50%);
+        }
+
+        &:focus::after,
+        &:hover::after {
+            right: 50%;
+            transform: rotate(0deg) translateX(50%);
         }
     }
 }

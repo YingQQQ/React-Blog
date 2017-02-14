@@ -8,16 +8,16 @@ import Textarea from '../components/Textarea';
 const fetchUrl = 'http://localhost:3000/api/save';
 
 class Write extends Component {
-  // componentWillMount() {
-  //   if (!this.props.isAuthenticated) {
-  //     this.context.router.push('/login');
-  //   }
-  // }
-  // componentWillUpdate(nextProps) {
-  //   if (!nextProps.isAuthenticated) {
-  //     this.context.router.push('/');
-  //   }
-  // }
+  componentWillMount() {
+    if (!this.props.isAuthenticated) {
+      this.context.router.push('/login');
+    }
+  }
+  componentWillUpdate(nextProps) {
+    if (!nextProps.isAuthenticated) {
+      this.context.router.push('/');
+    }
+  }
   render() {
     return (
       <main>
@@ -25,7 +25,6 @@ class Write extends Component {
           <Col xs={6} offset={3} className="boxShadow write">
             <Textarea fetchUrl={fetchUrl} />
           </Col>
-          <button>12312</button>
         </Row>
       </main>
     );

@@ -31,7 +31,8 @@
     "react/forbid-prop-types":"off",
     "quote-props":"off",
     "no-restricted-syntax":"off",
-    "class-methods-use-this":"off"
+    "class-methods-use-this":"off",
+    "no-plusplus":"off"
   },
   "plugins": [
     "react", "import"

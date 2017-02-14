@@ -17,18 +17,6 @@ export default async (ctx, next) => {
     return next();
   }
   const isMatch = user.comparePassword(password, user.password);
-
-  // if (!isMatch) {
-  //   ctx.body = {
-  //     errors: {
-  //       password: '密码错误'
-  //     }
-  //   };
-  // } else {
-  //   ctx.body = {
-  //     errors: false
-  //   };
-  // }
   ctx.body = !isMatch ? {
     errors: {
       password: '密码错误'

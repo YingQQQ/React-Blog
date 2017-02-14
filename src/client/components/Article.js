@@ -1,37 +1,31 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import Row from './Grid/Row';
-import Col from './Grid/Col';
 import MarkdownEle from './MarkdownEle';
 
-const styleType = 'center';
 
-const Article = ({ post }) => {
+const Article = ({ post, hasButton, substring }) => {
   return (
-    <article className="boxShadow">
-      <Row column={true} alignType={styleType}>
-        <header>
-          <h1>
-            <Link to="/">{post.title}</Link>
-          </h1>
-          <Row justifyType={styleType}>
-            <Col xs={3}>
-              <span>Web Design</span>
-            </Col>
-            <Col xs={3}>
-              <time>{post.date}</time>
-            </Col>
-          </Row>
-        </header>
-        <MarkdownEle text={post.post} />
+    <section className="boxShadow">
+      <header>
+        <h1>
+          <Link to={`/blog/${post._id}`}>{post.title}</Link>
+        </h1>
+        <time>{post.meta.creatAt.substring(0, 10)}</time>
+      </header>
+      <MarkdownEle text={substring ? post.post.substring(0, 100) : post.post} />
+      { hasButton ?
         <div className="button">
-          <Link to="/" >Continue reading</Link>
-        </div>
-      </Row>
-    </article>
+          <Link to={`/blog/${post._id}`} >Continue reading</Link>
+        </div> :
+        null
+      }
+    </section>
   );
 };
+
 Article.propTypes = {
   post: PropTypes.object.isRequired,
+  hasButton: PropTypes.bool,
+  substring: PropTypes.bool
 };
 export default Article;

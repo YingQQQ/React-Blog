@@ -12,7 +12,6 @@ const justifyType = {
 class Home extends Component {
   render() {
     const { posts, loaded } = this.props;
-    console.log(posts);
     if (!loaded) {
       return (
         <main>
@@ -24,7 +23,8 @@ class Home extends Component {
       <main>
         <Row justifyType={justifyType.around}>
           <Col xs={7} >
-            {posts.map((post, i) => <Article post={post} key={i} />)}
+            {posts.map((post, i) =>
+              <Article post={post} key={i} substring={true} hasButton={true} />)}
           </Col>
           <Col xs={4}>
             <Aside />

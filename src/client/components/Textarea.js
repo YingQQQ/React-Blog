@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import loginORsaveAction from '../actions/loginORsaveAction';
 import TextFieldGroup from './TextFieldGroup';
-
+import validData from '../utils/validData';
 
 class TextareaForm extends Component {
   constructor(props) {
@@ -32,17 +32,15 @@ class TextareaForm extends Component {
     };
     console.log(_data);
     const { fetchUrl } = this.props;
-    console.log(fetchUrl);
     if (this.isValid()) {
       this.props.loginORsaveAction(fetchUrl, _data)
         .then((data) => {
-          console.log(data.errors);
-          if (data.errors) {
+          if (data.err) {
             this.setState({
-              errors: data.errors
+              errors: data.err
             });
           } else {
-            this.context.router.push('/write');
+            this.context.router.push('/');
           }
         });
     }
@@ -65,6 +63,13 @@ class TextareaForm extends Component {
       baseScrollHeight: curNode.scrollHeight
     });
   }
+  isValid() {
+    const { errors, isValid } = validData(this.state);
+    if (!isValid) {
+      this.setState({ errors });
+    }
+    return isValid;
+  }
   render() {
     const { title, errors, post, rows } = this.state;
     return (
@@ -86,6 +91,10 @@ class TextareaForm extends Component {
           onKeyUp={this.onKeyUp}
           onFocus={this.onFocus}
         />
+        <button>
+          <div className="spinner2" />
+          <h3>Send</h3>
+        </button>
       </form>
     );
   }

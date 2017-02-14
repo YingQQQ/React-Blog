@@ -12,7 +12,9 @@ class Markdown extends Component {
   }
   render() {
     return (
-      <div dangerouslySetInnerHTML={{ __html: marked(this.props.text) }} />
+      <article
+        dangerouslySetInnerHTML={{ __html: marked(this.props.text) }}
+      />
     );
   }
 }

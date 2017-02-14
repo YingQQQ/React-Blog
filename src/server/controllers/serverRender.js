@@ -14,17 +14,29 @@ const store = configureStore();
 
 export default async (ctx, next, renderProps) => {
   let prefetchTasks = [];
-  renderProps.components.forEach((component) => {
+  // renderProps.components.forEach((component) => {
+  //   if (component && component.WrappedComponent && component.WrappedComponent.fetch) {
+  //     console.log('into renderToString');
+  //     const _tasks = component.WrappedComponent.fetch(store.getState(), store.dispatch);
+  //     if (Array.isArray(_tasks)) {
+  //       prefetchTasks = prefetchTasks.concat(_tasks);
+  //     } else if (_tasks.then) {
+  //       prefetchTasks.push(_tasks);
+  //     }
+  //   }
+  // });
+  for (const component of renderProps.components) {
     if (component && component.WrappedComponent && component.WrappedComponent.fetch) {
-      console.log('into renderToString');
-      const _tasks = component.WrappedComponent.fetch(store.getState(), store.dispatch);
+      const _tasks = component
+        .WrappedComponent
+        .fetch(store.getState(), store.dispatch);
       if (Array.isArray(_tasks)) {
         prefetchTasks = prefetchTasks.concat(_tasks);
       } else if (_tasks.then) {
         prefetchTasks.push(_tasks);
       }
     }
-  });
+  }
   await Promise.all(prefetchTasks);
   if (__DEVELOPMENT__) {
     webpackIsomorphicTools.refresh();

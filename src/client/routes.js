@@ -6,12 +6,14 @@ import About from './containers/About';
 import Blog from './containers/Blog';
 import Login from './containers/Login';
 import Write from './containers/Write';
+import Single from './containers/Single';
 
 let routes = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="/blog" component={Blog} />
+      <Route path="/blog/:id" component={Single} />
       <Route path="/about" component={About} />
       <Route path="/login" component={Login} />
       <Route path="/write" component={Write} />
