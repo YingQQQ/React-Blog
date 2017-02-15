@@ -11,7 +11,7 @@ const alignType = {
   center: 'center',
   end: 'end'
 };
-const lists = ['Home', 'Blog', 'About', 'Write'];
+const lists = ['Home', 'Blog', 'About'];
 
 export default() => {
   return (

@@ -28,4 +28,7 @@ Article.propTypes = {
   hasButton: PropTypes.bool,
   substring: PropTypes.bool
 };
+Article.defaultProps = {
+  substring: false
+};
 export default Article;

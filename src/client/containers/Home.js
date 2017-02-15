@@ -5,10 +5,10 @@ import Aside from '../components/Aside';
 import Row from '../components/Grid/Row';
 import Col from '../components/Grid/Col';
 import Loader from '../components/Loader';
+import selfMap from '../utils/selfMap';
 
-const justifyType = {
-  around: 'around',
-};
+const justifyType = 'around';
+
 class Home extends Component {
   render() {
     const { posts, loaded } = this.props;
@@ -21,14 +21,13 @@ class Home extends Component {
     }
     return (
       <main>
-        <Row justifyType={justifyType.around}>
+        <Row justifyType={justifyType}>
           <Col xs={7} >
-            {posts.map((post, i) =>
-              <Article post={post} key={i} substring={true} hasButton={true} />)}
+            {selfMap((post, i) =>
+              <Article post={post} key={i} substring={true} hasButton={true} />, posts, 4)}
           </Col>
           <Col xs={4}>
-            <Aside />
-            <Aside />
+            <Aside posts={posts} />
           </Col>
         </Row>
       </main>

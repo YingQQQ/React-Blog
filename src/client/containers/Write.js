@@ -20,9 +20,9 @@ class Write extends Component {
   }
   render() {
     return (
-      <main>
+      <main className="write">
         <Row>
-          <Col xs={6} offset={3} className="boxShadow write">
+          <Col xs={6} offset={3} className="boxShadow">
             <Textarea fetchUrl={fetchUrl} />
           </Col>
         </Row>
